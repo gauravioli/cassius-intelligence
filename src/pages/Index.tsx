@@ -630,10 +630,10 @@ const Index = () => {
         </Sidebar>
 
         <SidebarInset className="flex-1">
-          {/* Header */}
-          <div className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-purple-200/20 p-6">
+          {/* Integrated Header - No Distinction */}
+          <div className="p-8 pb-0">
             <div className="max-w-7xl mx-auto">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center space-x-4">
                   <SidebarTrigger className="glass-oracle rounded-xl p-3 hover:bg-purple-50/10 transition-colors text-readable-purple border border-purple-200/30 flex items-center justify-center">
                     <Menu className="w-5 h-5" />
@@ -650,7 +650,7 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Search Interface with Enhanced 3D Bevel */}
+          {/* Search Interface with Extreme 3D Bevel */}
           <div className="relative z-30 px-8 pb-12">
             <div className="max-w-7xl mx-auto">
               <div className="glass-chat-3d-enhanced rounded-3xl p-10 subtle-glow">
@@ -663,7 +663,7 @@ const Index = () => {
                       onFocus={handleInputFocus}
                       onBlur={handleInputBlur}
                       disabled={isProcessing}
-                      className="flex-1 glass-oracle rounded-2xl px-8 py-6 text-readable-dark focus:outline-none focus:ring-2 focus:ring-purple-500/30 text-lg bg-transparent border border-purple-200/30 w-full placeholder-slate-400"
+                      className="flex-1 glass-chat-input rounded-2xl px-8 py-6 text-readable-dark focus:outline-none text-lg w-full placeholder-slate-400"
                     />
                     {showTypewriter && !inputValue && (
                       <div className="absolute left-8 top-1/2 -translate-y-1/2 typewriter-text pointer-events-none">
@@ -675,7 +675,7 @@ const Index = () => {
                   <button 
                     type="submit" 
                     disabled={isProcessing}
-                    className="glass-oracle rounded-2xl px-12 py-6 text-readable-purple hover:bg-purple-50/10 transition-colors font-semibold tracking-wide disabled:opacity-50"
+                    className="glass-chat-button rounded-2xl px-12 py-6 text-readable-purple font-semibold tracking-wide disabled:opacity-50"
                   >
                     {isProcessing ? (
                       <div className="flex items-center space-x-2">
@@ -691,37 +691,37 @@ const Index = () => {
                   </button>
                 </form>
 
-                {/* Chat Action Buttons */}
+                {/* Enhanced Chat Action Buttons */}
                 <div className="flex items-center space-x-4">
-                  <button className="glass-oracle rounded-xl p-3 hover:bg-purple-50/10 transition-colors">
+                  <button className="glass-chat-actions rounded-xl p-3">
                     <Paperclip className="w-4 h-4 text-readable-purple" />
                   </button>
-                  <button className="glass-oracle rounded-xl p-3 hover:bg-purple-50/10 transition-colors">
+                  <button className="glass-chat-actions rounded-xl p-3">
                     <AtSign className="w-4 h-4 text-readable-purple" />
                   </button>
-                  <button className="glass-oracle rounded-xl p-3 hover:bg-purple-50/10 transition-colors">
+                  <button className="glass-chat-actions rounded-xl p-3">
                     <Plus className="w-4 h-4 text-readable-purple" />
                   </button>
-                  <button className="glass-oracle rounded-xl p-3 hover:bg-purple-50/10 transition-colors">
+                  <button className="glass-chat-actions rounded-xl p-3">
                     <ImageIcon className="w-4 h-4 text-readable-purple" />
                   </button>
-                  <button className="glass-oracle rounded-xl p-3 hover:bg-purple-50/10 transition-colors">
+                  <button className="glass-chat-actions rounded-xl p-3">
                     <Mic className="w-4 h-4 text-readable-purple" />
                   </button>
-                  <button className="glass-oracle rounded-xl p-3 hover:bg-purple-50/10 transition-colors">
+                  <button className="glass-chat-actions rounded-xl p-3">
                     <MessageSquare className="w-4 h-4 text-readable-purple" />
                   </button>
                 </div>
 
-                {/* Chat History */}
+                {/* Enhanced Chat History */}
                 {showChatHistory && messages.length > 0 && (
                   <div className="mt-8 space-y-4 max-h-64 overflow-y-auto">
                     {messages.map((message) => (
                       <div key={message.id} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                         <div className={`max-w-[80%] px-4 py-3 rounded-2xl ${
                           message.type === 'user' 
-                            ? 'glass-oracle text-readable-dark' 
-                            : 'glass-oracle text-readable-dark'
+                            ? 'glass-chat-message text-readable-dark' 
+                            : 'glass-chat-message text-readable-dark'
                         }`}>
                           <p className="text-sm">{message.content}</p>
                           <p className="text-xs text-readable mt-2">{message.timestamp}</p>
@@ -973,11 +973,7 @@ const Index = () => {
                         {action.text}
                       </p>
                       
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2">
-                          <Shield className="w-4 h-4 text-readable-gold" />
-                          <span className="text-sm gradient-text-gold">Cassius Ready</span>
-                        </div>
+                      <div className="flex items-center justify-end">
                         <div className="flex items-center space-x-1 text-sm gradient-text-purple opacity-0 group-hover:opacity-100 transition-opacity">
                           <span>Execute →</span>
                         </div>
