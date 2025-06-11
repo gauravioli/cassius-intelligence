@@ -51,8 +51,13 @@ import OnboardingFlow from '@/components/OnboardingFlow';
 interface OnboardingData {
   businessName: string;
   businessType: string;
+  industry: string;
   targetAudience: string;
   goals: string[];
+  brandVoice: string;
+  experience: string;
+  budget: string;
+  priorities: string[];
 }
 
 const Index = () => {
