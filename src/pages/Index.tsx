@@ -432,7 +432,7 @@ const Index = () => {
       setTimeout(() => {
         const aiMessage = {
           id: Date.now() + 1,
-          content: 'Processing your request with Cassius Intelligence. Let me analyze the best approach for this campaign...',
+          content: 'Processing your request with Cassius AI. Let me analyze the best approach for this campaign...',
           type: 'agent',
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         };
