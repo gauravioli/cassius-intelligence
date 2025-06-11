@@ -1,0 +1,595 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 98%;
+    --foreground: 240 15% 15%;
+    --card: 240 20% 98%;
+    --card-foreground: 240 15% 15%;
+    --popover: 240 20% 98%;
+    --popover-foreground: 240 15% 15%;
+    --primary: 240 15% 15%;
+    --primary-foreground: 240 20% 98%;
+    --secondary: 240 15% 96%;
+    --secondary-foreground: 240 15% 15%;
+    --muted: 240 15% 96%;
+    --muted-foreground: 240 10% 45%;
+    --accent: 240 15% 96%;
+    --accent-foreground: 240 15% 15%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 240 20% 98%;
+    --border: 240 15% 90%;
+    --input: 240 15% 96%;
+    --ring: 240 15% 80%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 240 5.9% 90%;
+    --sidebar-ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    letter-spacing: -0.015em;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply text-foreground;
+    background: 
+      radial-gradient(circle at 15% 25%, rgba(147, 51, 234, 0.15) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(212, 175, 55, 0.12) 0%, transparent 40%),
+      radial-gradient(circle at 45% 15%, rgba(167, 139, 250, 0.10) 0%, transparent 35%),
+      radial-gradient(circle at 25% 85%, rgba(147, 51, 234, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 90% 10%, rgba(212, 175, 55, 0.08) 0%, transparent 30%),
+      radial-gradient(circle at 60% 80%, rgba(167, 139, 250, 0.08) 0%, transparent 35%),
+      linear-gradient(135deg, #ffffff 0%, #fefefe 25%, #fdfdfd 50%, #fcfcfc 75%, #fbfbfb 100%);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    position: relative;
+    min-height: 100vh;
+    /* Smooth scrolling performance */
+    scroll-behavior: smooth;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 30% 40%, rgba(147, 51, 234, 0.12) 0%, transparent 40%),
+      radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 35%),
+      radial-gradient(circle at 20% 80%, rgba(167, 139, 250, 0.06) 0%, transparent 30%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Smooth scrolling optimization */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Reduce motion for performance */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.015em;
+  }
+
+  /* Enhanced Chat Window with Superior 3D Bevel Effect */
+  .glass-chat-3d-enhanced {
+    @apply backdrop-blur-3xl;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(147, 51, 234, 0.22);
+    position: relative;
+    box-shadow: 
+      /* Deep floating elevation */
+      0 40px 100px rgba(147, 51, 234, 0.12),
+      0 25px 60px rgba(147, 51, 234, 0.08),
+      0 15px 35px rgba(147, 51, 234, 0.06),
+      /* Enhanced 3D bevel highlights */
+      inset 0 4px 0 rgba(255, 255, 255, 0.95),
+      inset 4px 0 0 rgba(255, 255, 255, 0.6),
+      inset 0 2px 0 rgba(255, 255, 255, 0.8),
+      inset 2px 0 0 rgba(255, 255, 255, 0.4),
+      /* Enhanced 3D bevel shadows */
+      inset 0 -4px 0 rgba(147, 51, 234, 0.10),
+      inset -4px 0 0 rgba(147, 51, 234, 0.08),
+      inset 0 -2px 0 rgba(147, 51, 234, 0.06),
+      inset -2px 0 0 rgba(147, 51, 234, 0.04);
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .glass-chat-3d-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at top center, rgba(147, 51, 234, 0.06) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, transparent 25%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 30%);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Enhanced Chat Window with Clean 3D Bevel Effect */
+  .glass-chat-3d {
+    @apply backdrop-blur-3xl;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(147, 51, 234, 0.22);
+    position: relative;
+    box-shadow: 
+      /* Floating elevation */
+      0 35px 80px rgba(147, 51, 234, 0.15),
+      0 20px 45px rgba(147, 51, 234, 0.10),
+      0 10px 25px rgba(147, 51, 234, 0.08),
+      /* Clean bevel highlights */
+      inset 0 2px 0 rgba(255, 255, 255, 0.9),
+      inset 2px 0 0 rgba(255, 255, 255, 0.4),
+      /* Clean bevel shadows */
+      inset 0 -2px 0 rgba(147, 51, 234, 0.08),
+      inset -2px 0 0 rgba(147, 51, 234, 0.06);
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .glass-chat-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at top center, rgba(147, 51, 234, 0.08) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, transparent 30%);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Primary Glass Oracle - Main content containers with enhanced depth */
+  .glass-oracle {
+    @apply backdrop-blur-3xl border;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(147, 51, 234, 0.15);
+    position: relative;
+    box-shadow: 
+      /* Floating elevation */
+      0 25px 60px rgba(147, 51, 234, 0.08),
+      0 15px 35px rgba(147, 51, 234, 0.06),
+      0 8px 18px rgba(147, 51, 234, 0.04),
+      /* Subtle inner glow */
+      inset 0 0 30px rgba(255, 255, 255, 0.8),
+      /* 3D depth */
+      inset 0 2px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -2px 0 rgba(147, 51, 234, 0.05);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  
+  .glass-oracle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at center, rgba(147, 51, 234, 0.02) 0%, transparent 70%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+      radial-gradient(circle at top right, rgba(212, 175, 55, 0.02) 0%, transparent 40%);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .glass-oracle:hover {
+    box-shadow: 
+      /* Enhanced floating elevation */
+      0 30px 70px rgba(147, 51, 234, 0.12),
+      0 18px 40px rgba(147, 51, 234, 0.08),
+      0 10px 22px rgba(147, 51, 234, 0.06),
+      /* Enhanced inner glow */
+      inset 0 0 40px rgba(255, 255, 255, 0.9),
+      /* Enhanced 3D depth */
+      inset 0 2px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -2px 0 rgba(147, 51, 234, 0.08);
+    transform: translateY(-1px);
+  }
+
+  /* Glass Panel - Task and campaign containers (PERFORMANCE OPTIMIZED) */
+  .glass-panel {
+    @apply backdrop-blur-3xl;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(147, 51, 234, 0.12);
+    position: relative;
+    box-shadow: 
+      /* Floating elevation */
+      0 20px 50px rgba(147, 51, 234, 0.06),
+      0 12px 28px rgba(147, 51, 234, 0.04),
+      0 6px 15px rgba(147, 51, 234, 0.03),
+      /* Subtle inner glow */
+      inset 0 0 25px rgba(255, 255, 255, 0.7),
+      /* Clean 3D depth */
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(147, 51, 234, 0.04);
+    transition: box-shadow 0.15s ease;
+  }
+  
+  .glass-panel:hover {
+    background: rgba(255, 255, 255, 0.96);
+    border-color: rgba(147, 51, 234, 0.18);
+    box-shadow: 
+      /* Enhanced floating elevation */
+      0 25px 60px rgba(147, 51, 234, 0.10),
+      0 15px 32px rgba(147, 51, 234, 0.06),
+      0 8px 18px rgba(147, 51, 234, 0.04),
+      /* Enhanced inner glow */
+      inset 0 0 35px rgba(255, 255, 255, 0.8),
+      /* Enhanced 3D depth */
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(147, 51, 234, 0.06);
+  }
+
+  /* Glass Item - Smaller interactive elements (PERFORMANCE OPTIMIZED) */
+  .glass-item {
+    @apply backdrop-blur-xl;
+    background: rgba(255, 255, 255, 0.90);
+    border: 1px solid rgba(147, 51, 234, 0.10);
+    position: relative;
+    box-shadow: 
+      /* Floating elevation */
+      0 15px 35px rgba(147, 51, 234, 0.05),
+      0 8px 18px rgba(147, 51, 234, 0.03),
+      0 4px 9px rgba(147, 51, 234, 0.02),
+      /* Subtle inner glow */
+      inset 0 0 20px rgba(255, 255, 255, 0.6),
+      /* Clean 3D depth */
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(147, 51, 234, 0.03);
+    transition: box-shadow 0.15s ease;
+  }
+
+  .glass-item:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(147, 51, 234, 0.15);
+    box-shadow: 
+      /* Enhanced floating elevation */
+      0 18px 42px rgba(147, 51, 234, 0.08),
+      0 10px 22px rgba(147, 51, 234, 0.05),
+      0 5px 11px rgba(147, 51, 234, 0.03),
+      /* Enhanced inner glow */
+      inset 0 0 25px rgba(255, 255, 255, 0.7),
+      /* Enhanced 3D depth */
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(147, 51, 234, 0.05);
+  }
+
+  .glass-task {
+    @apply backdrop-blur-xl;
+    background: rgba(255, 255, 255, 0.92);
+    position: relative;
+    border: 1px solid rgba(147, 51, 234, 0.12);
+    box-shadow: 
+      /* Floating elevation */
+      0 15px 35px rgba(147, 51, 234, 0.06),
+      0 8px 18px rgba(147, 51, 234, 0.04),
+      /* Subtle inner glow */
+      inset 0 0 20px rgba(255, 255, 255, 0.6),
+      /* Clean 3D depth */
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(147, 51, 234, 0.04);
+  }
+
+  /* Ultra Translucent Enhanced Suggestion Boxes */
+  .glass-suggestion-enhanced {
+    @apply backdrop-blur-[40px];
+    background: rgba(255, 255, 255, 0.80);
+    border: 1px solid rgba(212, 175, 55, 0.20);
+    position: relative;
+    box-shadow: 
+      /* Deep floating elevation */
+      0 25px 60px rgba(212, 175, 55, 0.04),
+      0 15px 35px rgba(212, 175, 55, 0.03),
+      0 8px 18px rgba(212, 175, 55, 0.02),
+      /* Subtle inner glow */
+      inset 0 0 30px rgba(255, 255, 255, 0.7),
+      /* Enhanced 3D bevel */
+      inset 0 3px 0 rgba(255, 255, 255, 0.8),
+      inset 3px 0 0 rgba(255, 255, 255, 0.4),
+      inset 0 -3px 0 rgba(212, 175, 55, 0.04),
+      inset -3px 0 0 rgba(212, 175, 55, 0.03);
+    transition: all 0.2s ease;
+  }
+  
+  .glass-suggestion-enhanced:hover {
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(212, 175, 55, 0.30);
+    box-shadow: 
+      /* Enhanced floating elevation */
+      0 30px 75px rgba(212, 175, 55, 0.08),
+      0 20px 45px rgba(212, 175, 55, 0.05),
+      0 12px 25px rgba(212, 175, 55, 0.03),
+      /* Enhanced inner glow */
+      inset 0 0 40px rgba(255, 255, 255, 0.8),
+      inset 0 0 20px rgba(212, 175, 55, 0.02),
+      /* Enhanced 3D bevel */
+      inset 0 4px 0 rgba(255, 255, 255, 0.9),
+      inset 4px 0 0 rgba(255, 255, 255, 0.5),
+      inset 0 -4px 0 rgba(212, 175, 55, 0.06),
+      inset -4px 0 0 rgba(212, 175, 55, 0.04);
+  }
+  
+  .glass-suggestion-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at center, rgba(212, 175, 55, 0.02) 0%, transparent 80%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 70%),
+      radial-gradient(circle at top right, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .glass-suggestion-enhanced:hover::before {
+    opacity: 1;
+  }
+
+  /* Original Suggestion Boxes */
+  .glass-suggestion {
+    @apply backdrop-blur-3xl;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    position: relative;
+    box-shadow: 
+      /* Floating elevation */
+      0 20px 50px rgba(212, 175, 55, 0.06),
+      0 12px 28px rgba(212, 175, 55, 0.04),
+      0 6px 15px rgba(212, 175, 55, 0.03),
+      /* Subtle inner glow */
+      inset 0 0 25px rgba(255, 255, 255, 0.6),
+      /* 3D depth */
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(212, 175, 55, 0.04);
+    transition: all 0.2s ease;
+  }
+  
+  .glass-suggestion:hover {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(212, 175, 55, 0.25);
+    box-shadow: 
+      /* Enhanced floating elevation */
+      0 25px 60px rgba(212, 175, 55, 0.10),
+      0 15px 32px rgba(212, 175, 55, 0.06),
+      0 8px 18px rgba(212, 175, 55, 0.04),
+      /* Enhanced inner glow */
+      inset 0 0 35px rgba(255, 255, 255, 0.7),
+      inset 0 0 15px rgba(212, 175, 55, 0.02),
+      /* Enhanced 3D depth */
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(212, 175, 55, 0.06);
+  }
+  
+  .glass-suggestion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .glass-suggestion:hover::before {
+    opacity: 1;
+  }
+
+  .glass-button {
+    @apply backdrop-blur-xl border;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(147, 51, 234, 0.18);
+    position: relative;
+    box-shadow: 
+      /* Floating elevation */
+      0 12px 28px rgba(147, 51, 234, 0.08),
+      0 6px 15px rgba(147, 51, 234, 0.05),
+      /* 3D depth */
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(147, 51, 234, 0.06);
+    transition: all 0.15s ease;
+  }
+  
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 
+      /* Enhanced floating elevation */
+      0 15px 35px rgba(147, 51, 234, 0.12),
+      0 8px 18px rgba(147, 51, 234, 0.08),
+      /* Enhanced 3D depth */
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(147, 51, 234, 0.10);
+  }
+
+  /* Custom Toast Styling to Match Glassmorphism Design */
+  [data-sonner-toaster] {
+    --normal-bg: rgba(255, 255, 255, 0.98) !important;
+    --normal-border: rgba(147, 51, 234, 0.25) !important;
+    --normal-text: rgba(30, 41, 59, 0.98) !important;
+    --toast-bg: rgba(255, 255, 255, 0.98) !important;
+    --toast-border: rgba(147, 51, 234, 0.25) !important;
+    --toast-text: rgba(30, 41, 59, 0.98) !important;
+  }
+
+  [data-sonner-toast] {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 1px solid rgba(147, 51, 234, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+    border-radius: 1rem !important;
+    box-shadow: 
+      0 20px 50px rgba(147, 51, 234, 0.15),
+      0 12px 28px rgba(147, 51, 234, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(147, 51, 234, 0.08) !important;
+  }
+
+  [data-sonner-toast] [data-title] {
+    color: rgba(109, 40, 217, 0.98) !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+  }
+
+  [data-sonner-toast] [data-description] {
+    color: rgba(30, 41, 59, 0.95) !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Minimal Glow Effects for Performance */
+  .purple-glow {
+    box-shadow: 
+      0 0 15px rgba(147, 51, 234, 0.12),
+      0 0 25px rgba(167, 139, 250, 0.08);
+  }
+
+  .gold-glow {
+    box-shadow: 
+      0 0 15px rgba(212, 175, 55, 0.15),
+      0 0 25px rgba(212, 175, 55, 0.08);
+  }
+
+  .subtle-glow {
+    box-shadow: 
+      0 0 12px rgba(147, 51, 234, 0.08),
+      0 0 20px rgba(147, 51, 234, 0.05);
+  }
+
+  /* Enhanced text readability */
+  .text-readable {
+    color: rgba(51, 65, 85, 0.95);
+  }
+
+  .text-readable-dark {
+    color: rgba(30, 41, 59, 0.98);
+  }
+
+  .text-readable-purple {
+    color: rgba(109, 40, 217, 0.98);
+  }
+
+  .text-readable-gold {
+    color: rgba(180, 146, 46, 0.98);
+  }
+
+  .gradient-text-purple {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gradient-text-gold {
+    background: linear-gradient(135deg, #d4af37 0%, #f59e0b 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .section-title {
+    color: #7c3aed;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(147, 51, 234, 0.4) 50%, transparent 100%);
+    border-radius: 1px;
+  }
+
+  .typewriter-text {
+    color: rgba(71, 85, 105, 0.8);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out;
+  }
+
+  .gradient-bg-purple {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(168, 85, 247, 0.04) 100%);
+  }
+
+  .gradient-bg-gold {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(245, 158, 11, 0.04) 100%);
+  }
+
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-auto {
+    will-change: auto;
+  }
+
+  /* Sidebar optimizations */
+  [data-sidebar] {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
